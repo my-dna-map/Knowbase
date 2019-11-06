@@ -1,0 +1,56 @@
+.modal {
+    font-size: 12px;
+  }
+  .modal > .header {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+  }
+  .modal > .content {
+    width: 100%;
+    padding: 10px 5px;
+  }
+  .modal > .actions {
+    width: 100%;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+  }
+  .modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+  }
+
+  table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  table tr:hover {background-color: #ddd;}
+  
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }

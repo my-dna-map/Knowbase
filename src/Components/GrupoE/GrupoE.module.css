@@ -1,0 +1,79 @@
+.Recuadro{
+    width:100%;
+    border:1px solid;
+    background: red;
+    height: 100px;
+}
+
+.container{
+    width:90%;
+    height: auto;
+    border:1px solid #cccccc;
+    display: flex;
+    flex-direction: column;
+    margin-top:10px;
+    margin-bottom: 10px;
+
+}
+
+.Contendor{
+    width:90%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top:10px;
+    margin-bottom: 10px;
+    border: none !important;
+}
+.Columna10{
+    width:10%;
+    height: 100%;
+}
+.Columna11{
+    width:11%;
+    height: 100%;
+}
+.Columna20{
+    width:20%;
+    height: 100%;
+}
+
+.Datos{
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.Enfermedad{
+    display: flex;
+    flex-direction: row;
+    border-bottom:1px solid #cccc ;
+}
+
+.Descripcion{
+    display: flex;
+    flex-direction: row;
+}
+
+.Columna80{
+    width: 79%;
+
+}
+.Columna50
+{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Genes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.Tabla{
+    width:100%;
+}

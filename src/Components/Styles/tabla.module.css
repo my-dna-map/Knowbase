@@ -1,0 +1,19 @@
+.Columna20{
+    width:20%;
+    height: 100%;
+}
+
+.Datos{
+    display: flex;
+    flex-direction: row;
+}
+
+.Descripcion{
+    display: flex;
+    flex-direction: row;
+}
+
+.Columna80{
+    width: 80%;
+
+}
