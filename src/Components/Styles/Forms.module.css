@@ -1,0 +1,97 @@
+.Form{
+    width: 400px;
+    background: rgba(0,0,0,0.03);
+    height: 300px;
+    margin:auto;
+    margin-top:40px;
+
+}
+
+.Linea{
+    width:100%;
+    height: 45px;
+    display: flex;
+}
+
+.Columna{
+    width:50%;
+    height: 45px;
+}
+
+.CampoTexto{
+    height: 35px;
+    text-align: center;
+    width:100%;
+    border:none;
+    font-size: x-large ;
+    background: #E8F0FE;
+}
+.CampoTextoGrande{
+    height: 122px;
+    text-align: center;
+    width:100%;
+    border:none;
+    font-size: x-large ;
+    background: #E8F0FE;
+}
+.Datos{
+    width:300px;
+    height: 60px;
+   
+}
+.DatosGrandes{
+    width:600px;
+    height: 150px;
+    border-bottom: lightslategrey 1px solid;
+}
+.DatosGrandesBis{
+    width:600px;
+    height: 150px;
+    
+}
+
+.ItemRelacion{
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(173,168,173,1);
+-moz-box-shadow: 4px 4px 5px 0px rgba(173,168,173,1);
+box-shadow: 4px 4px 5px 0px rgba(173,168,173,1);
+width:90%;
+margin:auto;
+border-radius: 10px;
+margin-bottom: 20px;
+}
+
+.SuperContenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.ContenedorBotones{
+    display: flex;
+    
+}
+
+.Contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.Titulo{
+    font-size: small;
+    color:lightslategray;
+
+}
+
+.Dato{
+    font-size: x-large ;
+
+}
+
+.DatoGrande{
+    font-size: x-large ;
+    overflow-y:scroll;
+    height: 105px;
+}

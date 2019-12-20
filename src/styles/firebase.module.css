@@ -1,0 +1,85 @@
+.Container {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
+.Container form {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  flex-basis: 400px;
+}
+
+.LoginCotainer {
+  flex-direction: row;
+  flex-basis: 400px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  height: 450px;
+  align-content: inherit;
+  justify-content: center;
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+}
+.RegisterContainer {
+  flex-direction: row;
+  flex-basis: 400px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  height: 610px;
+  align-content: inherit;
+  justify-content: center;
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+}
+
+.LoginCotainer input,
+.RegisterContainer input {
+  flex-basis: 80%;
+  height: 35px;
+  border: none;
+  background: #95bcfc;
+  padding: 10px;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #919294;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: red;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: red;
+}
+
+.Imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 170px;
+}
+
+.Logo {
+  height: 120px;
+}

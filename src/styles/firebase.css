@@ -1,0 +1,69 @@
+.LoginCotainer {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  top: 40%;
+  left: 40%;
+}
+.RegisterContainer {
+  position: relative;
+  width: 400px;
+  height: 610px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  box-shadow: 10px 10px 5px 0px rgba(204, 204, 204, 1);
+  top: 40%;
+  left: 40%;
+}
+.LoginCotainer img,
+.RegisterContainer img {
+  position: absolute;
+  top: 40px;
+  left: 100px;
+}
+.LoginCotainer input,
+.RegisterContainer input {
+  width: 80%;
+  height: 35px;
+  border: none;
+  background: #95bcfc;
+  margin-left: 40px;
+  padding: 10px;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #919294;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: red;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: red;
+}
+
+.Imagen {
+  height: 170px;
+}
+
+.Logo {
+  height: 120px;
+}
+.LoginCotainer a {
+  position: relative;
+  bottom: 10px;
+  left: 32px;
+}

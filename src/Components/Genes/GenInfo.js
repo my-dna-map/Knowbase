@@ -1,79 +1,129 @@
 import React, { Component } from 'react';
-import styles from '../GrupoE/GrupoE.module.css';
+import Loader from '../Loader';
+import Styles from '../Styles/Forms.module.css';
+import Consultas from "../../Helpers/consultas";
+import "react-table/react-table.css";
+import { Link } from "react-router-dom";
+import Back from '../../Imagenes/back.png';
+import Edit from '../../Imagenes/Edit.png';
+import Delete from '../../Imagenes/delete.png';
+import Auth from '../../Helpers/Graphs';
+import TextField from '@material-ui/core/TextField';
+import Informacion from '../Controles/Informacion';
+
 
 export default class GenInfo extends Component {
   constructor(props) {
     super(props);
     // No llames this.setState() aquí!
-    this.state = { Genes: [] ,loading:true, Error:""};
+    this.state = { Genes: [] ,
+                  loading:true, 
+                  Error:"",
+                  IsBio : false};
   }
 
   componentDidMount() {
-    fetch( process.env.REACT_APP_API_URL +'/Genes/'+ this.props.match.params.IdGen)
-    .then(res => res.json())
-    .then((data) => {
-      this.setState({ Genes: data ,loading:false })
-    })
-    .catch(error => {
-        console.log(error.message);
-      this.setState({Error: error.message, loading:false});
-    });
+
+    Auth.isBio().then(res =>{ this.setState({IsBio: res})})
+
+    Consultas.Get('/Genes/'+ this.props.match.params.IdGen).then(data=> this.setState({Item: data,loading:false}));
   }
 
+
   render() {
-    console.log(this.state.Genes);
     if(this.state.loading)
     {
-      return  <div>Waiting....</div>
+      return  <Loader></Loader>
     }
     else{
       if(this.state.Error !== "")
         return  <div>Hubo un problema para recuperar los Genes</div>
       else{
+        let isBio = this.state.IsBio; 
+        console.log(this.state.Item)
     return (
       <div> 
-        <h1>Detalles del Gen {this.state.Genes.NombreGen} V{this.state.Genes.MayorVersion}.{this.state.Genes.MinorVersion}</h1>
-        <div className={styles.Contendor}>
-        <div className={styles.Columna20}>
-           {
-             this.state.Genes.Paneles.map(Panel=>
-              (
-                <a href={"/Paneles/" + Panel.IdPanel }>
-                  {Panel.NombrePanel + " V" + Panel.MayorVersion + "." + Panel.MinorVersion}
-                </a>
-             ))
-           }
 
-        </div>
-        <div className={styles.Columna80}>
-           <div className={styles.Contendor}>
-             <div className={styles.Columna50}>
-                <div className={styles.Columna20}>
-                  <span>NM</span>
+             <div>
+              <h2>Detalles del Gen {this.state.Item.NombreGen} </h2> 
+               <Link to="/Genes" tootltip="Listado de Genes"><img src={Back} alt="Back"></img></Link>
+               {
+                 isBio ? <Link to={"/Genes/Edit/" + this.state.Item.IdGen}><img src={Edit} alt="Edit"></img></Link> :''
+               }
+               {
+                 isBio ?<Link to={"/Genes/Delete/" + this.state.Item.IdGen}><img src={Delete} alt="Delete"></img></Link>:''
+               }
+              
+              <div className={Styles.SuperContenedor}>
+            <div className={Styles.Contenedor}>
+                    <div className={Styles.DatosGrandesBis}>
+                        <TextField
+                        label="Nombre del Gen"
+                        name="NombreGen"
+                        fullWidth
+                        onChange={this.onChange}
+                        margin="normal"
+                        readOnly
+                        value= {this.state.Item.NombreGen}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        />
+                    </div> 
+                    <div className={Styles.DatosGrandesBis}>
+                        <TextField
+                        label="OMIM del Gen"
+                        name="OMIMGen"
+                        fullWidth
+                        type="number"
+                        onChange={this.onChange}
+                        margin="normal"
+                        readOnly
+                        value= {this.state.Item.OMIMGen}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        />
+                    </div>
+                </div> 
+                <div className={Styles.Contenedor}>
+                    <div className={Styles.DatosGrandesBis}>
+                        <TextField
+                        label="NM del Gen"
+                        name="NM"
+                        fullWidth
+                        onChange={this.onChange}
+                        margin="normal"
+                        readOnly
+                        value= {this.state.Item.NM}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        />
+                    </div> 
+                    <div className={Styles.DatosGrandesBis}>
+                        <TextField
+                        label="Descripcion del Gen"
+                        name="DescripcionGen"
+                        fullWidth
+                        multiline
+                        rows="4"
+                        onChange={this.onChange}
+                        margin="normal"
+                        readOnly
+                        value= {this.state.Item.DescripcionGen}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        />
+                    </div>
                 </div>
-                  <div className={styles.Columna80}>
-                    <spam>{this.state.Genes.NM}</spam>
-                  </div>
-             </div> 
-             <div className={styles.Columna50}>
-                <div className={styles.Columna20}>
-                  <span>OMIM Gen</span>
-                </div>
-                  <div className={styles.Columna80}>
-                    <spam>{this.state.Genes.OMINGen}</spam>
-                  </div>
-             </div>
-           </div>
-           <div className={styles.Descripcion}>
-           <div className={styles.Columna20}>
-                  <span>Descripción</span>
-                </div>
-                  <div className={styles.Columna80}>
-                    <span>{this.state.Genes.DescripcionGen}</span>
-                  </div>
-           </div>
-        </div>
-</div>
+            </div>
+                <Informacion Informacion={this.state.Item}></Informacion>
+                
+            </div>
+
+       
 
       </div>
     );

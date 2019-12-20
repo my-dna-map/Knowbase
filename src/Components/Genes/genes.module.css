@@ -1,0 +1,55 @@
+.ListItem{
+    width:200px;
+    height: 45px;
+    border: 0.5px solid #cccccc;
+    border-radius: 10px;
+    margin: 5px;
+    display: flex;
+    background-color:aliceblue;
+}
+
+.ListItemGrande{
+    width:450px;
+    height: 45px;
+    border: 0.5px solid #cccccc;
+    border-radius: 10px;
+    margin: 5px;
+    display: flex;
+    background-color:aliceblue;
+}
+
+.Buttons{
+    width:65px;
+    height: 45px;
+    padding-top: 10px;
+}
+.Datas{
+    width:140px;
+    height: 45px;
+}
+.DatosGrandes{
+    width:280px;
+    height: 100px;
+}
+
+.Imagenes{
+    margin-top: 2px;
+}
+.SubTitulo{
+    color: lightslategrey;
+    font-size: small;
+    
+}
+
+.Contenedor{
+    width:90%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top:10px;
+    margin-bottom: 10px;
+    border: none !important;
+    margin:auto;
+}

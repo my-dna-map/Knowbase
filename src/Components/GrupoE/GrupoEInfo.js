@@ -1,71 +1,119 @@
 import React, { Component } from 'react';
-import EnfermedadC from '../Enfermedades/EnfermedadC';
-import styles from './GrupoE.module.css';
-import PanelC from '../Paneles/Panel';
+import Styles from '../Styles/Forms.module.css';
+import Consultas from "../../Helpers/consultas";
+import { Link } from "react-router-dom";
+
+import Auth from '../../Helpers/Graphs';
+import Loading from '../Loader';
+import TextField from '@material-ui/core/TextField';
+import Back from '../../Imagenes/back.png';
+import Edit from '../../Imagenes/Edit.png';
+import Delete from '../../Imagenes/delete.png';
+import Informacion from '../Controles/Informacion';
+import RelacionGERO from '../Relaciones/RelacionGERO';
+
 
 export default class Paneles extends Component {
   constructor(props) {
     super(props);
     // No llames this.setState() aquí!
-    this.state = { GrupoED: [] ,loading:true, Error:""};
+    this.state = { Item: {} ,loading:true, Error:""};
   }
 
   componentDidMount() {
-    fetch( process.env.REACT_APP_API_URL +'/GrupoE/'+ this.props.match.params.IdGrupoE)
-    .then(res => res.json())
-    .then((data) => {
-      this.setState({ GrupoED: data ,loading:false })
-    })
-    .catch(error => {
-        console.log(error.message);
-      this.setState({Error: error.message, loading:false});
-    });
+    Auth.isBio().then(res =>{ this.setState({IsBio: res})
+    Consultas.Get('/GrupoE/'+ this.props.match.params.IdGrupoE).then(data=> this.setState({Item: data,loading:false, texto: data.DescripcionGrupoE, Relaciones: data.Data}));})
+
   }
 
   render() {
-
     if(this.state.loading)
-    {
-      return  <div>Waiting....</div>
-    }
+    return <Loading></Loading>
     else{
-      if(this.state.Error !== "")
-        return  <div>Hubo un problema para recuperar los Paneles</div>
-      else{
-          console.log(this.state.GrupoED);
-    return (
-      <div> 
-        <h1>Detalles del grupo {this.state.GrupoED.NombreGrupoE} V{this.state.GrupoED.MayorVersion}.{this.state.GrupoED.MinorVersion}</h1>
-        <div className={styles.Contendor}>
-        <div className={styles.Columna20}>
-            <h3>Paneles Asociados</h3>
-            {this.state.GrupoED.Paneles.map((Panel) => (
-          <PanelC key={Panel.IdPanel} panel={Panel} Version={false}></PanelC>
+ 
+  let isBio = this.state.IsBio;
+  let Relaciones = this.state.Relaciones
+  return (
+    <div> 
+       <h2>Detalles del Grupo de Enfermedades {this.state.NombreGrupoE} </h2>
+       <Link to="/Enfermedades" tootltip="Listado de Genes"><img src={Back} alt="Back"></img></Link>
+               {
+                 isBio ? <Link to={"/Grupoe/Edit/" + this.state.Item.IdGrupoE}><img src={Edit} alt="Edit"></img></Link> :''
+               }
+               {
+                 isBio ?<Link to={"/GrupoE/Delete/" + this.state.Item.IdGrupoE}><img src={Delete} alt="Delete"></img></Link>:''
+               }
+              
+          <div className={Styles.SuperContenedor}>
+          <div className={Styles.Contenedor}>
+                  <div className={Styles.DatosGrandesBis}>
+                  <TextField
+          label="Nombre del Grupo de Enfermedades"
+          name="NombreGrupoE"
+          fullWidth
+          readOnly
+          value={this.state.Item.NombreGrupoE}
+          margin="normal"
           
-        ))}
-
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+                  </div>
+                  <div className={Styles.DatosGrandesBis}>
+                  <TextField
+          label="Descripción del Grupo de Enfermedades"
+          name="DescripcionGrupoE"
+          fullWidth
+          multiline
+          readOnly
+          rows="4"
+          value={this.state.Item.DescripcionGrupoE}
+          margin="normal"
+          
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+                  </div>
+                  </div>
+                  <div className={Styles.Contenedor}>
+                  <div className={Styles.DatosGrandesBis}>
+                    
+                    <TextField
+        label="Nombre de la Enfermedad"
+        name="NombreEnfermedad"
+        fullWidth
+        readOnly
+        value={this.state.Item.NombrePanel + " V" + this.state.Item.Version}
+        margin="normal"
+        InputLabelProps={{
+          shrink: true,
+        }}
+      /></div>
+                    <div className={Styles.DatosGrandesBis}>
+                    </div>
+                  </div>
+              
+                </div>  
+                <div >
+              
+                </div>
+                <Informacion Informacion={this.state.Item}></Informacion>
+        <h2>Relaciones</h2>
+        <div  className={Styles.SuperContenedor} onChange={this.Dinamic} >
+          {
+            (Relaciones !== null)?
+            Relaciones.map((Relacion,idex)=>{
+              return (
+                <RelacionGERO Index={idex} key={idex} Value={Relacion}  ></RelacionGERO>
+              
+              )
+            }):""
+          }
         </div>
-        <div className={styles.Columna80}>
-{
-     
-       
-    this.state.GrupoED.Enfermedades.map((Enfermedad) => (
-      <EnfermedadC Enfermedad={Enfermedad}></EnfermedadC>
-     
-))
-}
-        </div><div className={styles.Descripcion}>
-          <div class={styles.Columna20}>
-              <b><span>Descripción de la enfermedad y epidemiología</span></b>
-          </div>
-          <div class={styles.Columna80}>
-            <p>{this.state.GrupoED.DescripcionGrupoE}</p>
-          </div>
-        </div>  
 </div>
-
-      </div>
     );
     }}
   }
-}
+

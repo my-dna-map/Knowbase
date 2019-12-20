@@ -1,0 +1,89 @@
+.mdmloadercontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.mdmloadercontainer > span {
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+  margin-right: 4px;
+  animation-name: loader;
+  animation-duration: 1200ms;
+  animation-iteration-count: infinite;
+}
+
+.mdmloadercontainer > span:last-of-type {
+  margin-right: 0;
+}
+
+.mdmloadercontainer > span:nth-child(even) {
+  background-color: #006adb;
+}
+
+.mdmloadercontainer > span:nth-child(odd) {
+  background-color: #f88729;
+}
+
+.mdmloadercontainer > span:nth-child(2) {
+  animation-delay: 240ms;
+}
+
+.mdmloadercontainer > span:nth-child(3) {
+  animation-delay: 480ms;
+}
+
+.mdmloadercontainer > span:nth-child(4) {
+  animation-delay: 720ms;
+}
+
+.mdmloadercontainer > span:nth-child(5) {
+  animation-delay: 960ms;
+}
+
+.mdmloadercontainer > span:nth-child(6) {
+  animation-delay: 1200ms;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes loader {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(2);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Standard syntax */
+@keyframes loader {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(2);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.mdmcontainer {
+  flex: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: #fff none repeat scroll 0% 0%;
+  z-index: 99999;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

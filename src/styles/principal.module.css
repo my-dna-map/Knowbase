@@ -1,0 +1,31 @@
+.Campo {
+  flex-basis: 80%;
+  height: 35px;
+  border: none;
+  background: #95bcfc;
+  padding: 10px;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #919294;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: red;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: red;
+}
+
+.Container {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
