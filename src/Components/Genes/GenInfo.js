@@ -10,6 +10,9 @@ import Delete from '../../Imagenes/delete.png';
 import Auth from '../../Helpers/Graphs';
 import TextField from '@material-ui/core/TextField';
 import Informacion from '../Controles/Informacion';
+import VarianteRO from '../Variantes/VarianteRO';
+import RelacionERO from '../Relaciones/RelacionGRO';
+
 
 
 export default class GenInfo extends Component {
@@ -26,7 +29,7 @@ export default class GenInfo extends Component {
 
     Auth.isBio().then(res =>{ this.setState({IsBio: res})})
 
-    Consultas.Get('/Genes/'+ this.props.match.params.IdGen).then(data=> this.setState({Item: data,loading:false}));
+    Consultas.Get('/Genes/'+ this.props.match.params.IdGen).then(data=> this.setState({Item: data,loading:false,Variantes: data.Variantes,Relaciones: data.Data[0]}));
   }
 
 
@@ -41,7 +44,9 @@ export default class GenInfo extends Component {
       else{
         let isBio = this.state.IsBio; 
         console.log(this.state.Item)
+        console.log(this.state.Variantes)
     return (
+      
       <div> 
 
              <div>
@@ -119,6 +124,24 @@ export default class GenInfo extends Component {
                     </div>
                 </div>
             </div>
+            <div>
+              <h1>Variantes</h1>
+            </div>
+            {this.state.Variantes.map((Variante) => (
+              <VarianteRO key={Variante.IdVariante} Value={Variante}></VarianteRO>
+            
+            
+            ))}
+
+            <div>
+              <h1>Relaciones</h1>
+            </div>
+            {this.state.Relaciones.map((Relacion) => (
+              <RelacionERO key={Relacion.IdRelacion} Value={Relacion}></RelacionERO>
+            
+            
+            ))}
+
                 <Informacion Informacion={this.state.Item}></Informacion>
                 
             </div>

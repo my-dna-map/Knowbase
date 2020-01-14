@@ -2,12 +2,15 @@ import { connect } from "react-redux";
 import { getUser } from "../Store/User/reducer";
 import store from '../Store';
 
+const debug = false;
 
 
 class Auth {
    
 
     static async  isBio(Token){
+      
+
         if(store.getState().userReducer.user.access_token === undefined)
         { 
           return   Promise.resolve(false)    }

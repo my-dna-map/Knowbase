@@ -44,7 +44,7 @@ const INITIAL_STATE = {
             })
             .then(
               data=> {
-              //  console.log(data);
+                console.log(data);
                this.props.setUser(data);
                this.props.history.push('/');
               }
